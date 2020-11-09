@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox fx:id="content" prefHeight="720.0" prefWidth="640.0" style="-fx-background-color: #F5F5F5;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <ToolBar prefHeight="40.0" prefWidth="200.0">
+        <items>
+            <HBox>
+               <children>
+                  <ImageView fx:id="android_icon" fitHeight="48.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
+                  </ImageView>
+                  <Label contentDisplay="CENTER" prefHeight="48.0" text="Yuque" wrapText="true" HBox.hgrow="ALWAYS">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="24.0" />
+                     </HBox.margin>
+                  </Label>
+               </children>
+            </HBox>
+        </items>
+         <padding>
+            <Insets bottom="24.0" left="24.0" right="24.0" top="24.0" />
+         </padding>
+      </ToolBar>
+      <VBox>
+         <children>
+            <HBox fx:id="ok_layout" alignment="CENTER_LEFT">
+               <VBox.margin>
+                  <Insets top="24.0" />
+               </VBox.margin>
+               <children>
+                  <Button id="ok_button" fx:id="back_button" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onBackClick" text="Back">
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </Button>
+                  <Label fx:id="repo_name_field" text="Repo Name" wrapText="true">
+                     <HBox.margin>
+                        <Insets left="12.0" />
+                     </HBox.margin>
+                     <font>
+                        <Font size="14.0" />
+                     </font></Label>
+                  <Button id="ok_button" fx:id="refresh_button" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onRefreshClick" style="-fx-background-color: #090;" text="Refresh" textFill="WHITE">
+                     <HBox.margin>
+                        <Insets left="8.0" />
+                     </HBox.margin>
+                     <font>
+                        <Font size="10.0" />
+                     </font>
+                  </Button>
+               </children>
+            </HBox>
+            <Label text="Article List">
+               <VBox.margin>
+                  <Insets top="12.0" />
+               </VBox.margin>
+            </Label>
+            <ListView fx:id="list_view" prefHeight="500.0" prefWidth="200.0">
+               <VBox.margin>
+                  <Insets top="12.0" />
+               </VBox.margin>
+            </ListView>
+         </children>
+         <padding>
+            <Insets bottom="24.0" left="24.0" right="24.0" />
+         </padding>
+      </VBox>
+   </children>
+</VBox>

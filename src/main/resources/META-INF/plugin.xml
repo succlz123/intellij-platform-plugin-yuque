@@ -1,0 +1,17 @@
+<idea-plugin>
+    <id>org.succlz123.plugins.yuque</id>
+    <name>Yuque</name>
+    <vendor email="succlz123@gmail.com" url="http://www.github.com/succlz123/intellij-platform-plugin-yuque">succlz123
+    </vendor>
+
+    <depends>com.intellij.modules.platform</depends>
+<!--    <depends>com.intellij.javafx</depends>-->
+
+    <extensions defaultExtensionNs="com.intellij">
+        <toolWindow id="Yuque"
+                    anchor="right"
+                    icon="AllIcons.General.Modified"
+                    factoryClass="org.succlz123.plugins.yuque.ui.YuqueWindowFactory"/>
+    </extensions>
+
+</idea-plugin>
