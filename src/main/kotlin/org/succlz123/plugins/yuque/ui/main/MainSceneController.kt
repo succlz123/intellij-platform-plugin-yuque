@@ -81,7 +81,7 @@ open class MainSceneController(val yuqueHelper: YuqueHelper, var force: Boolean,
                 userInfo.token = token
                 hideTokenInput(userInfo.name)
             }
-            getRepoList(userInfo.login)
+            getRepoList(userInfo.login, true)
         }, ProgressIndicatorProvider.getGlobalProgressIndicator())
     }
 
@@ -92,7 +92,7 @@ open class MainSceneController(val yuqueHelper: YuqueHelper, var force: Boolean,
 
     @FXML
     fun onRefreshClick(event: ActionEvent?) {
-        initContentView()
+        initContentView(true)
     }
 
     private fun showTokenInput() {
@@ -119,10 +119,10 @@ open class MainSceneController(val yuqueHelper: YuqueHelper, var force: Boolean,
         logout_layout.isManaged = true
         refresh_button.isVisible = true
         refresh_button.isManaged = true
-        logout_button.text = "123 - Switch Account"
+        logout_button.text = "${name} - Switch Account"
     }
 
-    private fun getRepoList(login: String?) {
+    private fun getRepoList(login: String?, force: Boolean) {
         ProgressManager.getInstance().runProcess({
             Platform.runLater {
                 list_view.placeholder = Label("Loading Repository List......")
@@ -142,12 +142,8 @@ open class MainSceneController(val yuqueHelper: YuqueHelper, var force: Boolean,
                 return@runProcess
             }
             val list = FXCollections.observableArrayList<YuqueRepoList>()
-//            for (repo in repos) {
-//
-//            }
-            repos.forEachIndexed { index, yuqueRepoList ->
-                yuqueRepoList.name = "知识库 " + (index + 1)
-                list.add(yuqueRepoList)
+            for (repo in repos) {
+                list.add(repo)
             }
             Platform.runLater {
                 list_view.placeholder = null
@@ -183,10 +179,10 @@ open class MainSceneController(val yuqueHelper: YuqueHelper, var force: Boolean,
         android_icon.image = Image(resource.toString())
         list_view.isEditable = false
         list_view.prefHeightProperty().bind(content.prefHeightProperty())
-        initContentView()
+        initContentView(force)
     }
 
-    private fun initContentView() {
+    private fun initContentView(force: Boolean) {
         val str = getInfo()
         if (str.isNullOrEmpty()) {
             showTokenInput()
@@ -200,7 +196,7 @@ open class MainSceneController(val yuqueHelper: YuqueHelper, var force: Boolean,
         } else {
             hideTokenInput(name)
             yuqueHelper.initToken(token)
-            getRepoList(login)
+            getRepoList(login, force)
         }
     }
 }

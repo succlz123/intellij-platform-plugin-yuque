@@ -21,10 +21,10 @@ import org.succlz123.plugins.yuque.support.YuqueRepoList
 import org.succlz123.plugins.yuque.ui.YuqueWindowFactory
 
 open class ArticleDetailSceneController(
-    val yuqueHelper: YuqueHelper,
-    val repo: YuqueRepoList,
-    val article: YuqueArticleList,
-    val backCallback: () -> Unit
+        val yuqueHelper: YuqueHelper,
+        val repo: YuqueRepoList,
+        val article: YuqueArticleList,
+        val backCallback: () -> Unit
 ) {
     var project: Project? = null
 
@@ -65,17 +65,21 @@ open class ArticleDetailSceneController(
                 Platform.runLater {
                     val error = "Get Article Detail Failed, Please Check Your Token or Network!"
                     ApplicationManager.getApplication().invokeLater(
-                        {
-                            Messages.showMessageDialog(project, error, YuqueWindowFactory.TAG, Messages.getInformationIcon())
-                        },
-                        ModalityState.NON_MODAL
+                            {
+                                Messages.showMessageDialog(project, error, YuqueWindowFactory.TAG, Messages.getInformationIcon())
+                            },
+                            ModalityState.NON_MODAL
                     )
                 }
                 return@runProcess
             }
             Platform.runLater {
                 webview.engine.userStyleSheetLocation = "data:,body { font: 14px Arial; }"
-                webview.engine.loadContent(articles.body_html)
+                if (articles.body_html.isNullOrEmpty()) {
+                    webview.engine.loadContent("No Data - Article content is empty")
+                } else {
+                    webview.engine.loadContent(articles.body_html)
+                }
             }
         }, ProgressIndicatorProvider.getGlobalProgressIndicator())
     }

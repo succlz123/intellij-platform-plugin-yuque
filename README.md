@@ -8,6 +8,18 @@ A 3rd-part IntelliJ Platform Plugin for Yuque.
 
 <!-- Plugin description end -->
 
+## Screenshot
+
+![1][file:1]
+
+![2][file:2]
+
+![3][file:3]
+
+[file:1]: .github/readme/1.jpg
+[file:2]: .github/readme/2.jpg
+[file:3]: .github/readme/3.jpg
+
 ## Usage
 
 ### Download
@@ -39,9 +51,3 @@ A 3rd-part IntelliJ Platform Plugin for Yuque.
     **Oracle JDK 8**
     
 - Restart IDE
-
-## Screenshot
-
-![Release draft][file:1]
-
-[file:1]: .github/readme/1.jpg
